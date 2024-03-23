@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                let correct = document.querySelector('.correct');
+
+                correct.addEventListener('click', function() {
+                    correct.style.backgroundColor = 'Green';
+                    correct.style.color = 'White';
+                    correct.parentElement.querySelector('.feedback').innerHTML = 'Correct :)';
+                });
+
+                let incorrect = document.querySelectorAll('.incorrect');
+                for (let i = 0; i < incorrect.length; i++) {
+                    incorrect[i].addEventListener('click', function() {
+                        incorrect[i].style.backgroundColor = 'Red';
+                        incorrect[i].style.color = 'White';
+                        incorrect[i].parentElement.querySelector('.feedback').innerHTML = 'Incorrect :(';
+                    });
+                }
+
+                document.querySelector('.response').addEventListener('click', function() {
+                    let resp = document.querySelector('input');
+                    let ans_string = resp.value.trim().toLowerCase();
+                    if (ans_string == 'pacific ocean' || ans_string == 'pacific') {
+                        resp.style.backgroundColor = 'Green';
+                        resp.style.color = 'White';
+                        resp.parentElement.querySelector('.feedback').innerHTML = 'Correct :)';
+                    }
+                    else {
+                        resp.style.backgroundColor = 'Red';
+                        resp.style.color = 'White';
+                        resp.parentElement.querySelector('.feedback').innerHTML = 'Incorrect :(';
+                    }
+
+                });
+            });
+
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <h3>Which celestial body is known as the "Red Planet"?</h3>
+                <button class="incorrect option" type="button">Venus</button>
+                <button class="incorrect option" type="button">Jupiter</button>
+                <button class="correct option" type="button">Mars</button>
+                <button class="incorrect option" type="button">Neptune</button>
+                <p class="feedback"></p>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <!-- TODO: Add free response question here -->
+                <h3>What is the largest ocean on Earth?</h3>
+                <input type="text" class="answer">
+                <button type="submit" class="response option">Confirm</button>
+                <p class="feedback"></p>
+            </div>
+
+        </div>
+    </body>
+</html>
